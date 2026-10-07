@@ -16,20 +16,20 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("MASUK ADMIN"),
+        title: const Text("MASUK ADMIN"),
         backgroundColor: Colors.white,
       ),
       backgroundColor: Colors.white,
       body: Column(
         children: [
           Center(
-            child: Container(
+            child: SizedBox(
               width: 400,
               child: Column(
-                children: [ 
+                children: [
                   // TextFormField 1: Nama Pengguna
                   TextFormField(
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       fillColor: Colors.white,
                       hintText: 'Nama Pengguna',
                       filled: true,
@@ -42,10 +42,11 @@ class _MyHomePageState extends State<MyHomePage> {
                       inputNama.text = values;
                     },
                   ),
-                  SizedBox(height: 15),
+                  const SizedBox(height: 15),
                   // TextFormField 2: Kata Sandi
                   TextFormField(
-                    decoration: InputDecoration(
+                    obscureText: true,
+                    decoration: const InputDecoration(
                       fillColor: Colors.white,
                       hintText: 'Kata Sandi',
                       filled: true,
@@ -62,13 +63,12 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
           ),
-          // untuk kasih jarak antar widget
-          Padding(
+          const Padding(
             padding: EdgeInsets.all(16),
           ),
           // Tombol
           ElevatedButton(
-            child: Text("MASUK"),
+            child: const Text("MASUK"),
             onPressed: () {
               print(inputNama.text);
               print(inputSandi.text);
