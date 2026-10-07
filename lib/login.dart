@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
+class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<LoginPage> createState() => _LoginPageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _LoginPageState extends State<LoginPage> {
   // Controller untuk menyimpan teks input
   TextEditingController inputNama = TextEditingController();
   TextEditingController inputSandi = TextEditingController();
@@ -24,10 +24,13 @@ class _MyHomePageState extends State<MyHomePage> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Center(
-            child: Container(
-              width: 300,
-              child: Column(
-                children: [
+            child: Image(
+              image: AssetImage('asset/Image/login.png'),
+             width:200,
+             height:200,
+            ),
+            ),
+            SizedBox(height:15),
                   // Input 1: Nama Pengguna
                   TextFormField(
                     decoration: InputDecoration(
@@ -62,10 +65,10 @@ class _MyHomePageState extends State<MyHomePage> {
                       inputSandi.text = values;
                     },
                   ),
-                ],
-              ),
-            ),
-          ),
+                
+              
+          
+        
 
           Padding(
             padding: EdgeInsets.all(16),
