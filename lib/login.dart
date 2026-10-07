@@ -15,7 +15,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("olahraga"),
+        title: Text("MASUK ADMIN"),
         backgroundColor: Colors.white,
       ),
       // Background layar diubah menjadi warna putih
