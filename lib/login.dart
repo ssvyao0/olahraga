@@ -15,66 +15,124 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("MASUK ADMIN"),
-        backgroundColor: Colors.white,
-      ),
       backgroundColor: Colors.white,
-      body: Column(
-        children: [
-          Center(
-            child: SizedBox(
-              width: 400,
-              child: Column(
-                children: [
-                  // TextFormField 1: Nama Pengguna
-                  TextFormField(
-                    decoration: const InputDecoration(
-                      fillColor: Colors.white,
-                      hintText: 'Nama Pengguna',
-                      filled: true,
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(40)),
-                      ),
-                    ),
-                    controller: inputNama,
-                    onFieldSubmitted: (values) {
-                      inputNama.text = values;
-                    },
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              // 1. Header "MASUK ADMIN"
+              Container(
+                width: double.infinity,
+                height: 66,
+                color: const Color(0xFF2C3E50), // Warna sesuai Figma
+                alignment: Alignment.center,
+                child: const Text(
+                  "MASUK ADMIN",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
                   ),
-                  const SizedBox(height: 15),
-                  // TextFormField 2: Kata Sandi
-                  TextFormField(
-                    obscureText: true,
-                    decoration: const InputDecoration(
-                      fillColor: Colors.white,
-                      hintText: 'Kata Sandi',
-                      filled: true,
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(40)),
-                      ),
-                    ),
-                    controller: inputSandi,
-                    onFieldSubmitted: (values) {
-                      inputSandi.text = values;
-                    },
-                  ),
-                ],
+                ),
               ),
-            ),
+
+              const SizedBox(height: 30),
+
+              // 2. Card Pembungkus Input
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Container(
+                  padding: const EdgeInsets.all(20),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(15),
+                    border: Border.all(color: Colors.grey.shade300),
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      // Label Nama Pengguna
+                      const Text(
+                        "Nama Pengguna",
+                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                      ),
+                      const SizedBox(height: 8),
+                      // Input Nama Pengguna
+                      TextFormField(
+                        controller: inputNama,
+                        decoration: InputDecoration(
+                          filled: true,
+                          fillColor: const Color(0xFFF0F0F0), // Abu-abu muda sesuai Figma
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                            borderSide: BorderSide.none,
+                          ),
+                          contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+                        ),
+                      ),
+
+                      const SizedBox(height: 20),
+
+                      // Label Kata Sandi
+                      const Text(
+                        "Kata Sandi",
+                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                      ),
+                      const SizedBox(height: 8),
+                      // Input Kata Sandi
+                      TextFormField(
+                        controller: inputSandi,
+                        obscureText: true,
+                        decoration: InputDecoration(
+                          filled: true,
+                          fillColor: const Color(0xFFF0F0F0),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                            borderSide: BorderSide.none,
+                          ),
+                          contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+                        ),
+                      ),
+                      const SizedBox(height: 30),
+                    ],
+                  ),
+                ),
+              ),
+
+              const SizedBox(height: 40),
+
+              // 3. Tombol MASUK (Warna Hijau)
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: SizedBox(
+                  width: double.infinity,
+                  height: 50,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color(0xFF2ECC71), // Hijau terang sesuai Figma
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      elevation: 0,
+                    ),
+                    onPressed: () {
+                      print(inputNama.text);
+                      print(inputSandi.text);
+                    },
+                    child: const Text(
+                      "MASUK",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ],
           ),
-          const Padding(
-            padding: EdgeInsets.all(16),
-          ),
-          // Tombol
-          ElevatedButton(
-            child: const Text("MASUK"),
-            onPressed: () {
-              print(inputNama.text);
-              print(inputSandi.text);
-            },
-          ),
-        ],
+        ),
       ),
     );
   }
