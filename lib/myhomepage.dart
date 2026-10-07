@@ -31,7 +31,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   hintText: 'Masukan Nama Kamu',
                   border: OutlineInputBorder(),
                 ),
-                //kontroller untuk
+                //kontroller untuk...
             controller: inputNama,
             // Ketika Dikirim nanti
             onSubmitted: (values) {
