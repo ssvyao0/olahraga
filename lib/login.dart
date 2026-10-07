@@ -8,37 +8,28 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  
-  final TextEditingController inputNama = TextEditingController();
-  final TextEditingController inputPassword = TextEditingController();
-
-  
-  @override
-  void dispose() {
-    inputNama.dispose();
-    inputPassword.dispose();
-    super.dispose();
-  }
+  // Pembuatan Variabel Yang Akan Dipakai
+  TextEditingController inputNama = TextEditingController();
+  TextEditingController inputSandi = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("MASUK ADMIN"),
+        title: Text("MASUK ADMIN"),
         backgroundColor: Colors.white,
       ),
       backgroundColor: Colors.white,
       body: Column(
         children: [
           Center(
-            child: SizedBox(
+            child: Container(
               width: 400,
               child: Column(
-                children: [
-                  // TextFormField 1: Nama Pengguna
+                children: [ 
+                  // TextFormField 1:Nama Pengguna
                   TextFormField(
-                    controller: inputNama,
-                    decoration: const InputDecoration(
+                    decoration: InputDecoration(
                       fillColor: Colors.white,
                       hintText: 'Nama Pengguna',
                       filled: true,
@@ -46,16 +37,15 @@ class _MyHomePageState extends State<MyHomePage> {
                         borderRadius: BorderRadius.all(Radius.circular(40)),
                       ),
                     ),
+                    controller: inputNama,
+                    onFieldSubmitted: (values) {
+                      inputNama.text = values;
+                    },
                   ),
-
-                  // Gunakan SizedBox untuk jarak
-                  const SizedBox(height: 15),
-
-                  // TextFormField 2: Kata Sandi
+                  SizedBox(height: 15),
+                  // TeksFormField 2: Kata Sandi
                   TextFormField(
-                    controller: inputPassword,
-                    obscureText: true, // Untuk menyembunyikan karakter password
-                    decoration: const InputDecoration(
+                    decoration: InputDecoration(
                       fillColor: Colors.white,
                       hintText: 'Kata Sandi',
                       filled: true,
@@ -63,21 +53,25 @@ class _MyHomePageState extends State<MyHomePage> {
                         borderRadius: BorderRadius.all(Radius.circular(40)),
                       ),
                     ),
+                    controller: inputSandi,
+                    onFieldSubmitted: (values) {
+                      inputSandi.text = values;
+                    },
                   ),
                 ],
               ),
             ),
           ),
-
-          // Jarak sebelum tombol
-          const SizedBox(height: 16),
-
-          // Tombol Masuk
+          // untuk kasih jarak antar widget
+          Padding(
+            padding: EdgeInsets.all(16),
+          ),
+          // Tombol
           ElevatedButton(
-            child: const Text("MASUK"),
+            child: Text("MASUK"),
             onPressed: () {
-              print("Nama: ${inputNama.text}");
-              print("Password: ${inputPassword.text}");
+              print(inputNama.text);
+              print(inputSandi.text);
             },
           ),
         ],
