@@ -8,52 +8,76 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  // Pembuatan Variabel Yang Akan Dipakai
-  TextEditingController inputNama = TextEditingController();
+  
+  final TextEditingController inputNama = TextEditingController();
+  final TextEditingController inputPassword = TextEditingController();
+
+  
+  @override
+  void dispose() {
+    inputNama.dispose();
+    inputPassword.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("MASUK ADMIN"),
+        title: const Text("MASUK ADMIN"),
         backgroundColor: Colors.white,
       ),
-      // Background layar diubah menjadi warna putih
       backgroundColor: Colors.white,
       body: Column(
         children: [
           Center(
-            child: Container(
-              width: 300,
-              child: TextFormField(
-                // Dekorasi untuk TextFormField
-                decoration: InputDecoration(
-                  fillColor: Colors.white,
-                  hintText: 'Masukan Nama Kamu',
-                  filled: true,
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(40)),
+            child: SizedBox(
+              width: 400,
+              child: Column(
+                children: [
+                  // TextFormField 1: Nama Pengguna
+                  TextFormField(
+                    controller: inputNama,
+                    decoration: const InputDecoration(
+                      fillColor: Colors.white,
+                      hintText: 'Nama Pengguna',
+                      filled: true,
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(40)),
+                      ),
+                    ),
                   ),
-                ),
-                // kontroler untuk ...
-                controller: inputNama,
-                // Ketika Dikirim nanti
-                onFieldSubmitted: (values) {
-                  // Syafa
-                  inputNama.text = values;
-                },
+
+                  // Gunakan SizedBox untuk jarak
+                  const SizedBox(height: 15),
+
+                  // TextFormField 2: Kata Sandi
+                  TextFormField(
+                    controller: inputPassword,
+                    obscureText: true, // Untuk menyembunyikan karakter password
+                    decoration: const InputDecoration(
+                      fillColor: Colors.white,
+                      hintText: 'Kata Sandi',
+                      filled: true,
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(40)),
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
           ),
-          // untuk kasih jarak antar widget
-          Padding(
-            padding: EdgeInsets.all(16),
-          ),
-          // Tombol
+
+          // Jarak sebelum tombol
+          const SizedBox(height: 16),
+
+          // Tombol Masuk
           ElevatedButton(
-            child: Text("Tampilkan Nama"),
+            child: const Text("MASUK"),
             onPressed: () {
-              print(inputNama.text);
+              print("Nama: ${inputNama.text}");
+              print("Password: ${inputPassword.text}");
             },
           ),
         ],
