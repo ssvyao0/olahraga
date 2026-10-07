@@ -27,7 +27,7 @@ class _MyHomePageState extends State<MyHomePage> {
               width: 400,
               child: Column(
                 children: [ 
-                  // TextFormField 1:Nama Pengguna
+                  // TextFormField 1: Nama Pengguna
                   TextFormField(
                     decoration: InputDecoration(
                       fillColor: Colors.white,
@@ -43,7 +43,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     },
                   ),
                   SizedBox(height: 15),
-                  // TeksFormField 2: Kata Sandi
+                  // TextFormField 2: Kata Sandi
                   TextFormField(
                     decoration: InputDecoration(
                       fillColor: Colors.white,
