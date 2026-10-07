@@ -13,42 +13,51 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: AppBar(
-      title: Text("olahraga"),
-      backgroundColor:Color(0XFFFFFF),
-    ),
-    backgroundColor:Color(0XFFFFFF),
-      body:Column(
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("olahraga"),
+        backgroundColor: Colors.white,
+      ),
+      // Background layar diubah menjadi warna putih
+      backgroundColor: Colors.white,
+      body: Column(
         children: [
           Center(
             child: Container(
-            width: 400,
-            // height: 400,
-              color: Color(0XFFFFFF), 
-              child:TextField(
-                // Dekorasi untuk Petunjuk Pengisian dan Garis
-                decoration:InputDecoration(
+              width: 300,
+              child: TextFormField(
+                // Dekorasi untuk TextFormField
+                decoration: InputDecoration(
+                  fillColor: Colors.white,
                   hintText: 'Masukan Nama Kamu',
-                  border: OutlineInputBorder(),
+                  filled: true,
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(40)),
+                  ),
                 ),
-                //kontroller untuk...
-            controller: inputNama,
-            // Ketika Dikirim nanti
-            onSubmitted: (values) {
-              //syafa
-              inputNama.text = values;
-            },
-          ), // Text Field
-         ), // Container
-       ), // Center
+                // kontroler untuk ...
+                controller: inputNama,
+                // Ketika Dikirim nanti
+                onFieldSubmitted: (values) {
+                  // Syafa
+                  inputNama.text = values;
+                },
+              ),
+            ),
+          ),
+          // untuk kasih jarak antar widget
+          Padding(
+            padding: EdgeInsets.all(16),
+          ),
+          // Tombol
           ElevatedButton(
             child: Text("Tampilkan Nama"),
             onPressed: () {
-            print(inputNama.text);
-          },
-        ),
-      ],
-     ),
-   );
+              print(inputNama.text);
+            },
+          ),
+        ],
+      ),
+    );
   }
 }
